@@ -1,3 +1,4 @@
+# syntax = registry-proxy.alfa-bank.kz/docker/dockerfile:1.4
 FROM registry-test.alfa-bank.kz/bnpl/node16.13.1-yarn1.22.17 as builder
 WORKDIR /srv
 COPY . /srv/
