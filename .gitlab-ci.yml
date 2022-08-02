@@ -1,17 +1,34 @@
 stages:
+  - build
   - containerize
   - deploy
-
-variables:
-  DOCKER_BUILDKIT: 1
+  - notify
 
 include:
-  - project: 'cicd/gitlab-ci-templates'
-    file: 'containerize/docker-ucrb-yarn.yml'
-  - project: 'cicd/gitlab-ci-templates'
-    file: 'deploy/deploy-universal.yml'
+  - project: "cicd/gitlab-ci-templates"
+    file: "containerize/docker-ucrb-yarn.yml"
+  - project: "cicd/gitlab-ci-templates"
+    file: "deploy/deploy-universal.yml"
+  - local: /ci-templates/tg-notify.yml
 
-dockerize_test:
-  image: registry-proxy.alfa-bank.kz/docker:20.10
-dockerize_prod:
-  image: registry-proxy.alfa-bank.kz/docker:20.10
+build:
+  stage: build
+  image: registry-test.alfa-bank.kz/bnpl/node16.13.1-yarn1.22.17
+  cache:
+    paths:
+      - node_modules/
+  artifacts:
+    when: always
+    expire_in: 20 minute
+    paths:
+      - build/*
+  # only:
+  #   - branches
+  script:
+    - echo '[BUILD PREPARE] git version' $(git describe --always)
+    - export REACT_APP_VERSION=$(git describe --always)
+    - echo '[BUILD] Run yarn to install packages'
+    - yarn install --network-timeout 100000 --non-interactive --pure-lockfile
+    - echo '[BUILD STARTED]'
+    - echo '[BUILD] Run yarn to generate frontend'
+    - PUBLIC_URL=/widget CI=false yarn run build
