@@ -2,14 +2,14 @@ stages:
   - build
   - containerize
   - deploy
-  - notify
+ # - notify
 
 include:
   - project: "cicd/gitlab-ci-templates"
     file: "containerize/docker-ucrb-yarn.yml"
   - project: "cicd/gitlab-ci-templates"
     file: "deploy/deploy-universal.yml"
-  - local: /ci-templates/tg-notify.yml
+#  - local: /ci-templates/tg-notify.yml
 
 build:
   stage: build
