@@ -4,7 +4,7 @@ WORKDIR /srv
 COPY . /srv/
 RUN <<eot
   export REACT_APP_VERSION=$(git describe --always)
-  export PUBLIC_URL=/b2b
+  export PUBLIC_URL=/widget
   export CI=false
   yarn install --network-timeout 100000 --non-interactive --pure-lockfile
   yarn run build
