@@ -36,5 +36,5 @@
     "webpack-dev-server": "^4.9.3"
   },
   "homepage": "https://rancher-test.alfa-bank.kz:30380/bnpl-widget",
-  "proxy": "https://rancher-test.alfa-bank.kz:30380//external/bnpl/"
+  "proxy": "https://rancher-test.alfa-bank.kz:30380/external/bnpl/"
 }
