@@ -14,7 +14,48 @@
   <noscript> Для корректной работы в вашем браузере должен быть включен JavaScript </noscript>
 
   <div id="bnpl-root"></div>
-  <button onclick="bnplApi.render('hello bnpl')">render</button>
+  <button onclick='bnplApi.render({
+    "partnerData": {
+        "partnerName": "bb-mania",
+        "partnerCode": "bb-mania.kz",
+        "pointCode": "02-9998-L5",
+        "partnerWebsite": "https://gardershop.kz",
+        "partnerEmail": "789+@info.kz"
+    },
+    "billNumber": "zdws-123312312",
+    "billAmount": "6000",
+    "itemsQuantity": 6,
+    "items": [
+        {
+            "itemId": "42",
+            "itemName": "fg",
+            "itemQuantity": 3,
+            "itemPrice": "2080",
+            "itemSum": 8001
+        },
+        {
+            "itemId": "12",
+            "itemName": "45",
+            "itemQuantity": 3,
+            "itemPrice": 1000,
+            "itemSum": 8000
+        }
+    ],
+    "successRedirect": "https://www.google.kz",
+    "failRedirect":"https://www.gardershop.kz",
+    "postLink": "https://rancher-test.alfa-bank.kz:30140/fake-certex/merchant/preapproved",
+    "phoneNumber": "77852369852",
+    "expiresAt": "2022-09-19T20:07:59Z",
+    "deliveryDate": "2022-10-19T20:50:20.680Z",
+    "deliveryPoint": {
+        "region": "",
+        "city": "",
+        "disctrict": "",
+        "street": "",
+        "house": "",
+        "flat": ""
+    }
+})'>render</button>
   <button onclick="bnplApi.unmount()">unmount</button>
 </body>
 
