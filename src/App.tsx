@@ -6,7 +6,7 @@ export const App = ({preappValues}: {preappValues: any}) => {
   const baseUrl = process.env.NODE_ENV === 'development' ? '/proxy/' : '/bnpl/';
   useEffect((
   ) => {
-    fetch("bnpl/v2/preapp", {method: "POST", body: JSON.stringify(preappValues) }).then((res) => console.log(res))
+    fetch("/bnpl/v2/preapp", {method: "POST", body: JSON.stringify(preappValues) }).then((res) => console.log(res))
   }, [])
   return <div style={{fontSize: '48px'}}>Hello bnpl</div>
 }
