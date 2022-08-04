@@ -1,13 +1,12 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const config = {
-    mode: 'development',
     output: {
         path: path.resolve(__dirname, 'build'),
         filename: 'index_bundle.js',
         library: 'bnplApi',
+        publicPath: 'auto',
     },
     entry: './src/index.tsx',
     module: {
