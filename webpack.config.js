@@ -1,12 +1,13 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const config = {
+module.exports = (env, argv) => {
+  return {
     output: {
         path: path.resolve(__dirname, 'build'),
         filename: 'index_bundle.js',
         library: 'bnplApi',
-        publicPath: '/bnpl-widget'
+        publicPath: argv.mode === 'production' ? '/bnpl-widget' : ''
     },
     entry: './src/index.tsx',
     module: {
@@ -54,6 +55,5 @@ const config = {
         open: true,
         hot: true,
     },
+  }
 };
-
-module.exports = config;
