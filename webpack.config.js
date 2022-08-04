@@ -54,6 +54,13 @@ module.exports = (env, argv) => {
         port: 3000,
         open: true,
         hot: true,
+        proxy: {
+          '**': {
+            target: 'https://rancher-test.alfa-bank.kz:30380',
+            secure: false,
+            changeOrigin: true,
+         }
+        }
     },
   }
 };
