@@ -1,0 +1,33 @@
+.field {
+  background-color: transparent !important;
+  margin-bottom: 40px;
+}
+
+.field div {
+  background-color: transparent !important;
+}
+
+.field input {
+  padding-left: 0 !important;
+}
+
+.label {
+  left: 0;
+}
+
+.button {
+  background-color: var(--bnpl-green);
+  color: var(--bnpl-white);
+  height: 48px;
+}
+
+.button:hover {
+  background-color: var(--bnpl-green);
+  color: var(--bnpl-white);
+  height: 48px;
+}
+
+.button:disabled {
+  background-color: var(--bnpl-lightgreen) !important;
+  color: var(--bnpl-white) !important;
+}
