@@ -6,7 +6,7 @@ const config = {
         path: path.resolve(__dirname, 'build'),
         filename: 'index_bundle.js',
         library: 'bnplApi',
-        publicPath: 'auto',
+        publicPath: '/bnpl-widget'
     },
     entry: './src/index.tsx',
     module: {
