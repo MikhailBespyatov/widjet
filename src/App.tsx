@@ -18,7 +18,7 @@ export const App = ({preappValues}: Props) => {
 
   useEffect((
   ) => {
-    fetch("/bnpl/v2/preapp", {method: "POST", body: JSON.stringify(preappValues) }).then((res) => console.log(res))
+    fetch("/bnpl/v2/preapp", {method: "POST", body: JSON.stringify(preappValues) }).then((res) => res.json()).then((data) => console.log(data))
   }, [])
 
   const getTitle = (title:string) => {
