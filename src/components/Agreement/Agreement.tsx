@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Checkbox } from '@alfalab/core-components/checkbox';
 
 import styles from './Agreement.module.css';
+import { IAgreementProps } from 'types/stepTypes';
 
 const Agreement = (props: IAgreementProps): JSX.Element => {
     const [activeLink, setActiveLink] = useState<boolean>(false);

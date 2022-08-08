@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="ru">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta name="theme-color" content="#000000" />
+        <!-- <meta name="description" content="" /> -->
+        <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+        <title>0-0-4</title>
+    </head>
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <meta name="theme-color" content="#000000" />
-  <!-- <meta name="description" content="" /> -->
-  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-  <title>0-0-4</title>
-</head>
+    <body>
+        <noscript> Для корректной работы в вашем браузере должен быть включен JavaScript </noscript>
 
-<body>
-  <noscript> Для корректной работы в вашем браузере должен быть включен JavaScript </noscript>
-
-  <div id="bnpl-root">add first page</div>
-  <button onclick='bnplApi.render({
+        <div id="bnpl-root">add first page</div>
+        <button
+            onclick='bnplApi.render({
     "partnerData": {
         "partnerName": "bb-mania",
         "partnerCode": "bb-mania.kz",
@@ -22,7 +22,7 @@
         "partnerWebsite": "https://gardershop.kz",
         "partnerEmail": "789+@info.kz"
     },
-    "billNumber": "zdws-123312312",
+    "billNumber": "zdws-123888377",
     "billAmount": "6000",
     "itemsQuantity": 6,
     "items": [
@@ -55,8 +55,10 @@
         "house": "",
         "flat": ""
     }
-})'>render</button>
-  <button onclick="bnplApi.unmount()">unmount</button>
-</body>
-
+})'
+        >
+            render
+        </button>
+        <button onclick="bnplApi.unmount()">unmount</button>
+    </body>
 </html>

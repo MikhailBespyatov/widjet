@@ -1,19 +1,19 @@
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 ::before {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 body {
-  margin: 0 !important;
-  font-family: system-ui !important;
-  overflow-x: hidden;
+    margin: 0 !important;
+    font-family: system-ui !important;
+    overflow-x: hidden;
 }
 
 :root {
-  --bnpl-green: #00A755;
-  --bnpl-lightgreen: rgba(0, 167, 85, 0.5);
-  --bnpl-white: #FFFFFF;
+    --bnpl-green: #00a755;
+    --bnpl-lightgreen: rgba(0, 167, 85, 0.5);
+    --bnpl-white: #ffffff;
 }

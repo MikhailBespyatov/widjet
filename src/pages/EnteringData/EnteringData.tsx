@@ -3,51 +3,94 @@ import Agreement from 'components/Agreement/Agreement';
 import s from './EnteringData.module.css';
 import { Button } from '@alfalab/core-components/button';
 import { MASKS, PLACEHOLDERS } from 'constants/formConstants';
-import { ChangeEvent, useState } from 'react';
-import { baseUrl, preappId } from 'constants/urls';
+import { ChangeEvent, useContext, useEffect, useState } from 'react';
+import { baseUrl } from 'constants/urls';
+import { PreappIdContext } from 'context/PreappIdContext';
+import { useSendSMSMutation } from 'services/baseAPI';
+import { validateIin, validatePhoneNumber } from 'helpers/validationFunctions';
+import { useDispatch } from 'react-redux';
+import { setStep } from 'store/reducers/stepSlice';
 
 export const EnteringData = () => {
-  const [iin, setIin] = useState('');
-  const [number, setNumber] = useState('');
+    const [iin, setIin] = useState('');
+    const [phoneNumber, setPhoneNumber] = useState('');
+    const preappId = useContext(PreappIdContext);
+    const [sendSMS, { isSuccess }] = useSendSMSMutation();
+    const [iinErrorMessage, setIinErrorMessage] = useState('');
+    const [phoneNumberErrorMessage, setPhoneNumberErrorMessage] = useState('');
+    const [agreementChecked, setAgreementChecked] = useState(false);
+    const dispatch = useDispatch();
 
-  const onIin = (e: ChangeEvent<HTMLInputElement>) => {
-    setIin(e.target.value);
-  }
+    const onIin = (e: ChangeEvent<HTMLInputElement>) => {
+        setIinErrorMessage('');
+        setIin(e.target.value.replace(/\s/g, ''));
+    };
 
-  const onNumber = (e: ChangeEvent<HTMLInputElement>) => {
-    setNumber(e.target.value)
-  }
+    const onPhoneNumber = (e: ChangeEvent<HTMLInputElement>) => {
+        setPhoneNumberErrorMessage('');
+        setPhoneNumber(e.target.value.replace(/\D/g, ''));
+    };
 
-  return (<div>
-              <h1>Введите Ваши данные</h1>
-              <MaskedInput
-                block
-                label="ИИН"
-                mask={MASKS.iin}
-                placeholder={PLACEHOLDERS.iin}
-                defaultValue={iin}
-                onChange={onIin}
-                fieldClassName={s.field}
-                focusedClassName={s.field}
-                labelClassName={s.label}
+    const onSendSMS = async () => {
+        const iinError = validateIin(iin);
+        const phoneNumberError = validatePhoneNumber(phoneNumber);
+        if (typeof iinError !== 'string' && typeof phoneNumberError !== 'string') {
+            sendSMS({ body: { iin, phoneNumber }, preappId });
+        } else {
+            if (typeof iinError === 'string') setIinErrorMessage(iinError);
+            if (typeof phoneNumberError === 'string') setPhoneNumberErrorMessage(phoneNumberError);
+        }
+    };
+
+    useEffect(() => {
+        console.log(isSuccess);
+        if (isSuccess) {
+            dispatch(setStep(1));
+        }
+    }, [isSuccess]);
+
+    return (
+        <div>
+            <h1>Введите Ваши данные</h1>
+            <div className={s.field_wrapper}>
+                <MaskedInput
+                    block
+                    label="ИИН"
+                    mask={MASKS.iin}
+                    placeholder={PLACEHOLDERS.iin}
+                    defaultValue={iin}
+                    onChange={onIin}
+                    fieldClassName={s.field}
+                    focusedClassName={s.field}
+                    labelClassName={s.label}
+                    error={iinErrorMessage}
                 />
-              <MaskedInput
-                block
-                label="Номер телефона"
-                placeholder={PLACEHOLDERS.phone}
-                mask={MASKS.phone}
-                defaultValue={number}
-                onChange={onNumber}
-                fieldClassName={s.field}
-                focusedClassName={s.field}
-                labelClassName={s.label}
-              />
-              <Agreement
+            </div>
+            <div className={s.field_wrapper}>
+                <MaskedInput
+                    block
+                    label="Номер телефона"
+                    placeholder={PLACEHOLDERS.phone}
+                    mask={MASKS.phone}
+                    defaultValue={phoneNumber}
+                    onChange={onPhoneNumber}
+                    fieldClassName={s.field}
+                    focusedClassName={s.field}
+                    labelClassName={s.label}
+                    error={phoneNumberErrorMessage}
+                />
+            </div>
+            <Agreement
                 dataTestId="checkbox-personal-data"
                 linkedText="обработку персональных данных"
                 title="Я соглашаюсь на "
                 linkUrl={`${baseUrl}${preappId}/agreement`}
-              />
-              <Button view="primary" block className={s.button}>Продолжить</Button>
-          </div>)
-}
+                checked={agreementChecked}
+                check={() => setAgreementChecked(!agreementChecked)}
+            />
+            <Button view="primary" block className={s.button} onClick={onSendSMS} disabled={!agreementChecked}>
+                Продолжить
+            </Button>
+        </div>
+    );
+};

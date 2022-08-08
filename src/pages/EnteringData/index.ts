@@ -1,1 +1,1 @@
-export {EnteringData} from './EnteringData';
+export { EnteringData } from './EnteringData';
