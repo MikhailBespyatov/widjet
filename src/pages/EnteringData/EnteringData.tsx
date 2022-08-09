@@ -10,6 +10,7 @@ import { useSendSMSMutation } from 'services/baseAPI';
 import { validateIin, validatePhoneNumber } from 'helpers/validationFunctions';
 import { useDispatch } from 'react-redux';
 import { setStep } from 'store/reducers/stepSlice';
+import { Title } from 'components/Title';
 
 export const EnteringData = () => {
     const [iin, setIin] = useState('');
@@ -51,7 +52,7 @@ export const EnteringData = () => {
 
     return (
         <div>
-            <h1>Введите Ваши данные</h1>
+            <Title>Введите Ваши данные</Title>
             <div className={s.field_wrapper}>
                 <MaskedInput
                     block

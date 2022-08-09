@@ -1,0 +1,15 @@
+.confirmation input {
+    background-color: transparent;
+    border-bottom: 2px solid #979797;
+    border-radius: 0;
+    width: 64px;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    color: #011438;
+}
+
+.confirmation input:not(:first-child) {
+    margin-left: 16px;
+}
