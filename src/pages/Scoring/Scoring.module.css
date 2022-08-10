@@ -1,0 +1,15 @@
+.wrapper {
+    text-align: center;
+}
+
+.description {
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    letter-spacing: 0.5px;
+    color: #6d7986;
+}
+
+.progress_icon_wrapper {
+    margin-bottom: 32px;
+}

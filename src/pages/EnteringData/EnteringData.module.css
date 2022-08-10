@@ -17,20 +17,3 @@
 .label {
     left: 0;
 }
-
-.button {
-    background-color: var(--bnpl-green);
-    color: var(--bnpl-white);
-    height: 48px;
-}
-
-.button:hover {
-    background-color: var(--bnpl-green);
-    color: var(--bnpl-white);
-    height: 48px;
-}
-
-.button:disabled {
-    background-color: var(--bnpl-lightgreen) !important;
-    color: var(--bnpl-white) !important;
-}

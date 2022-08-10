@@ -11,6 +11,7 @@ import { validateIin, validatePhoneNumber } from 'helpers/validationFunctions';
 import { useDispatch } from 'react-redux';
 import { setStep } from 'store/reducers/stepSlice';
 import { Title } from 'components/Title';
+import { CustomButton } from 'components/CustomButton';
 
 export const EnteringData = () => {
     const [iin, setIin] = useState('');
@@ -89,9 +90,9 @@ export const EnteringData = () => {
                 checked={agreementChecked}
                 check={() => setAgreementChecked(!agreementChecked)}
             />
-            <Button view="primary" block className={s.button} onClick={onSendSMS} disabled={!agreementChecked}>
+            <CustomButton block onClick={onSendSMS} disabled={!agreementChecked}>
                 Продолжить
-            </Button>
+            </CustomButton>
         </div>
     );
 };
