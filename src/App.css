@@ -17,3 +17,12 @@ body {
     --bnpl-lightgreen: rgba(0, 167, 85, 0.5);
     --bnpl-white: #ffffff;
 }
+
+button {
+    padding: 0;
+    border: none;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+    cursor: pointer;
+}

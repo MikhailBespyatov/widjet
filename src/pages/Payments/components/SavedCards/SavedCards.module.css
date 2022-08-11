@@ -1,0 +1,22 @@
+.succes {
+    font-size: 18px;
+    line-height: 22px;
+    color: #172a3f;
+    margin-left: 16px;
+}
+
+.succes_wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 39px;
+}
+
+.button {
+    font-size: 13px;
+    line-height: 18px;
+    color: #0dba26;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 40px;
+}

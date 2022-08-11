@@ -6,7 +6,7 @@ export interface StepState {
 }
 
 const initialState: StepState = {
-    step: 0,
+    step: 3,
 };
 
 export const stepSlice = createSlice({

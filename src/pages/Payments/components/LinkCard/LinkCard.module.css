@@ -1,0 +1,87 @@
+.title {
+    margin: 0;
+    padding: 0;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+    color: #172a3f;
+    margin-bottom: 20px;
+}
+
+.bank_icons {
+    display: flex;
+    align-items: center;
+}
+
+.bank_icons svg:last-child {
+    margin-left: 6px;
+}
+
+.label {
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0.4px;
+    color: #6d7986;
+    margin-bottom: 4px;
+}
+
+.input_container {
+    margin-bottom: 30px;
+}
+
+.error_text {
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0.4px;
+    color: #ff5c5c;
+}
+
+.error {
+    position: relative;
+}
+
+.error label {
+    color: #ff5c5c;
+}
+
+.error .field::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #ff5c5c;
+    border-bottom: none !important;
+}
+
+.field {
+    background-color: transparent;
+}
+
+.input {
+    padding: 0;
+    margin: 0;
+    margin-left: 8px;
+    vertical-align: center;
+}
+
+.name_input {
+    text-transform: uppercase;
+}
+
+.flex_container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.cvv {
+    margin-left: 16px;
+}
+
+@media (min-width: 520px) {
+    .wrapper {
+        max-width: 390px;
+    }
+}
