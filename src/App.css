@@ -18,7 +18,7 @@ body {
     --bnpl-white: #ffffff;
 }
 
-button {
+#bnpl-root button {
     padding: 0;
     border: none;
     font: inherit;
