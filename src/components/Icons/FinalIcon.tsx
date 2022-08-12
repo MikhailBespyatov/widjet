@@ -2,7 +2,7 @@ import { SVGProps } from 'react';
 
 export const FinalIcon = (props: SVGProps<SVGSVGElement>) => {
     return (
-        <svg width="134" height="100" viewBox="0 0 134 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg width="134" height="100" viewBox="0 0 134 100" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
             <path
                 d="M41.334 38.1545C41.334 35.2616 38.9888 32.9164 36.0959 32.9164H19.0721C16.1792 32.9164 13.834 35.2616 13.834 38.1545C13.834 41.0475 16.1792 43.3926 19.0721 43.3926H41.334V38.1545Z"
                 fill="#F6F7F8"
