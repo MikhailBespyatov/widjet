@@ -5,18 +5,18 @@ import { Button } from '@alfalab/core-components/button';
 import { MASKS, PLACEHOLDERS } from 'constants/formConstants';
 import { ChangeEvent, useContext, useEffect, useState } from 'react';
 import { baseUrl } from 'constants/urls';
-import { PreappIdContext } from 'context/PreappIdContext';
 import { useSendSMSMutation } from 'services/baseAPI';
 import { validateIin, validatePhoneNumber } from 'helpers/validationFunctions';
 import { useDispatch } from 'react-redux';
 import { setStep } from 'store/reducers/stepSlice';
 import { Title } from 'components/Title';
 import { CustomButton } from 'components/CustomButton';
+import { AppContext } from '../../context/AppContext';
 
 export const EnteringData = () => {
     const [iin, setIin] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
-    const preappId = useContext(PreappIdContext);
+    const { preappId } = useContext(AppContext);
     const [sendSMS, { isSuccess }] = useSendSMSMutation();
     const [iinErrorMessage, setIinErrorMessage] = useState('');
     const [phoneNumberErrorMessage, setPhoneNumberErrorMessage] = useState('');
@@ -38,6 +38,7 @@ export const EnteringData = () => {
         const phoneNumberError = validatePhoneNumber(phoneNumber);
         if (typeof iinError !== 'string' && typeof phoneNumberError !== 'string') {
             sendSMS({ body: { iin, phoneNumber }, preappId });
+            dispatch(setStep(1));
         } else {
             if (typeof iinError === 'string') setIinErrorMessage(iinError);
             if (typeof phoneNumberError === 'string') setPhoneNumberErrorMessage(phoneNumberError);
@@ -45,7 +46,6 @@ export const EnteringData = () => {
     };
 
     useEffect(() => {
-        console.log(isSuccess);
         if (isSuccess) {
             dispatch(setStep(1));
         }

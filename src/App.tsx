@@ -1,13 +1,14 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Mq } from '@alfalab/core-components/mq';
 import { BottomSheet } from '@alfalab/core-components/bottom-sheet';
 import './App.css';
 import s from './App.module.css';
 import { useGetPreappIdQuery } from 'services/baseAPI';
-import { PreappIdContext } from 'context/PreappIdContext';
 import { useSelector } from 'react-redux';
 import { STEPS } from 'constants/steps';
 import { RootState } from 'store/store';
+import { unmount } from '.';
+import { AppContext } from './context/AppContext';
 
 interface Props {
     preappValues: any;
@@ -32,8 +33,12 @@ export const App = ({ preappValues }: Props) => {
         );
     };
 
+    useEffect(() => {
+        if (!open) setTimeout(() => unmount(), 300);
+    }, [open]);
+
     return (
-        <PreappIdContext.Provider value={preappId as string}>
+        <AppContext.Provider value={{ preappId: preappId as string, onClose }}>
             <Mq query="--mobile">
                 <BottomSheet
                     open={open}
@@ -46,6 +51,6 @@ export const App = ({ preappValues }: Props) => {
                     {STEPS[step]}
                 </BottomSheet>
             </Mq>
-        </PreappIdContext.Provider>
+        </AppContext.Provider>
     );
 };

@@ -1,6 +1,9 @@
 import { CustomButton } from 'components/CustomButton';
 import { Title } from 'components/Title';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { AppContext } from '../../context/AppContext';
+import { setStep } from '../../store/reducers/stepSlice';
 import { SCORING_STEPS_CONFIG } from './constants';
 import s from './Scoring.module.css';
 
@@ -8,12 +11,17 @@ export const Scoring = () => {
     const [scoringStep, setScoringStep] = useState(0);
     const activeConfig = SCORING_STEPS_CONFIG[scoringStep];
     const { description, icon, progressIcon } = activeConfig;
+    const dispatch = useDispatch();
+    const { onClose } = useContext(AppContext);
 
     const timeoutId = setTimeout(() => {
         setScoringStep(scoringStep + 1);
-    }, 2000);
+    }, 5000);
 
-    if (scoringStep === 3) clearTimeout(timeoutId);
+    if (scoringStep === 3) {
+        clearTimeout(timeoutId);
+        dispatch(setStep(3));
+    }
 
     return (
         <div className={s.wrapper}>
@@ -21,7 +29,7 @@ export const Scoring = () => {
             <Title>Это займёт 30 секунд</Title>
             <p className={s.description}>{description}</p>
             <div className={s.progress_icon_wrapper}>{progressIcon}</div>
-            <CustomButton block onClick={() => {}}>
+            <CustomButton block onClick={onClose}>
                 Вернуться в магазин
             </CustomButton>
         </div>

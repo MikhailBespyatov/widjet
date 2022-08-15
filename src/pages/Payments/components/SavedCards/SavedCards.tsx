@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { OkIcon } from '../../../../components/Icons/OkIcon';
 import { Title } from '../../../../components/Title';
 import { cards } from '../../constants';
@@ -18,7 +19,7 @@ export const SavedCards = ({ onLinkCardClick }: Props) => {
             <Title>Добавьте карту любого банка</Title>
             <div>
                 {cards.map((card) => {
-                    return <SavedCard card={card} />;
+                    return <SavedCard key={card.cardMask} card={card} />;
                 })}
             </div>
             <button type="button" className={s.button} onClick={onLinkCardClick}>

@@ -1,16 +1,16 @@
 import { Confirmation, useConfirmation } from '@alfalab/core-components/confirmation';
 import { Title } from 'components/Title';
-import { PreappIdContext } from 'context/PreappIdContext';
 import { useContext, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useVerifySMSMutation } from 'services/baseAPI';
 import { setStep } from 'store/reducers/stepSlice';
+import { AppContext } from '../../context/AppContext';
 import s from './VerifySMS.module.css';
 
 export const VerifySMS = () => {
     const { confirmationState, confirmationScreen, setConfirmationState, setConfirmationScreen } = useConfirmation();
     const [verify, { isSuccess }] = useVerifySMSMutation();
-    const preappId = useContext(PreappIdContext);
+    const { preappId } = useContext(AppContext);
     const dispatch = useDispatch();
 
     const onInputFinished = (code: string) => {

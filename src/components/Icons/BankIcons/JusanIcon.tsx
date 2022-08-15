@@ -8,14 +8,14 @@ export const JusanIcon = (props: SVGProps<SVGSVGElement>) => {
                 fill="#FE5000"
             />
             <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 d="M12.7504 2.99887L10.5695 4.09209C10.0591 4.34791 9.73682 4.87086 9.73682 5.44316V12.8177L11.9172 11.725C12.4276 11.4687 12.7504 10.9458 12.7504 10.3738V2.99887Z"
                 fill="white"
             />
             <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 d="M8.23033 9.41897L6.04945 10.5122C5.53912 10.768 5.2168 11.291 5.2168 11.8633V15.084L7.39716 13.9908C7.90755 13.7348 8.23033 13.2119 8.23033 12.6396V9.41897Z"
                 fill="white"
             />

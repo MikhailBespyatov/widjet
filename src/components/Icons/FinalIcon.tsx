@@ -19,8 +19,8 @@ export const FinalIcon = (props: SVGProps<SVGSVGElement>) => {
             <path
                 d="M69.666 71.4583L67.0767 68.9583M51.7493 53.75L67.0767 68.9583M67.0767 68.9583L68.6243 52.5001"
                 stroke="#18293D"
-                stroke-width="0.416667"
-                stroke-linecap="round"
+                strokeWidth="0.416667"
+                strokeLinecap="round"
             />
             <path
                 d="M56.3619 30.2796C52.8514 29.1769 49.141 31.1959 48.066 34.6826C46.9687 38.2006 48.9857 41.9214 52.4649 43.0016C55.9754 44.1042 59.6858 42.0852 60.7608 38.5985C61.8358 35.1119 59.8723 31.3822 56.3619 30.2796Z"
@@ -45,41 +45,41 @@ export const FinalIcon = (props: SVGProps<SVGSVGElement>) => {
             <path
                 d="M56.0076 36.8047C56.1778 36.3165 57.0227 35.3339 58.2161 35.8266"
                 stroke="#18293D"
-                stroke-width="0.416667"
-                stroke-linecap="round"
+                strokeWidth="0.416667"
+                strokeLinecap="round"
             />
             <path
                 d="M60.5709 35.308C60.8988 34.5125 61.877 34.1718 62.3823 34.7528"
                 stroke="#18293D"
-                stroke-width="0.416667"
-                stroke-linecap="round"
+                strokeWidth="0.416667"
+                strokeLinecap="round"
             />
             <path
                 d="M66.4161 44.3645C65.3188 47.8824 61.6307 49.8701 58.1203 48.7675C55.5689 47.9753 53.8624 45.8027 53.486 43.3554C52.6996 44.2574 51.4497 44.6843 50.2588 44.3018C48.6352 43.7977 47.7224 42.1008 48.2241 40.4737C48.7257 38.8466 50.4179 37.9329 52.0416 38.437C52.7374 38.6531 53.308 39.1104 53.7045 39.6792C54.4073 37.7707 52.5255 36.7025 52.205 36.0936C51.8933 35.5384 52.193 34.8546 52.8627 34.5786C53.5323 34.3026 60.9385 31.3426 60.9385 31.3426L62.9628 36.441C65.8571 37.8108 67.406 41.1952 66.4161 44.3645Z"
                 stroke="#17293E"
-                stroke-width="0.416667"
-                stroke-miterlimit="10"
+                strokeWidth="0.416667"
+                strokeMiterlimit="10"
             />
             <path
                 d="M50.0399 40.3149L52.1535 41.1239"
                 stroke="#17293E"
-                stroke-width="0.416667"
-                stroke-miterlimit="10"
-                stroke-linecap="round"
+                strokeWidth="0.416667"
+                strokeMiterlimit="10"
+                strokeLinecap="round"
             />
             <path
                 d="M50.6271 42.2036L51.2715 40.7733"
                 stroke="#17293E"
-                stroke-width="0.416667"
-                stroke-miterlimit="10"
-                stroke-linecap="round"
+                strokeWidth="0.416667"
+                strokeMiterlimit="10"
+                strokeLinecap="round"
             />
             <path
                 d="M61.5951 39.1476L62.8768 38.0812L60.4902 36.2678"
                 stroke="#17293E"
-                stroke-width="0.416667"
-                stroke-miterlimit="10"
-                stroke-linecap="round"
+                strokeWidth="0.416667"
+                strokeMiterlimit="10"
+                strokeLinecap="round"
             />
             <path
                 d="M57.9004 38.3828C57.2309 38.6588 56.7546 37.6066 57.4777 37.3218C58.1473 37.0458 58.6235 38.098 57.9004 38.3828Z"
@@ -92,20 +92,20 @@ export const FinalIcon = (props: SVGProps<SVGSVGElement>) => {
             <path
                 d="M63.3687 39.8783C63.1677 40.8189 61.4882 41.8139 60.334 40.4836"
                 stroke="#18293D"
-                stroke-width="0.416667"
-                stroke-linecap="round"
+                strokeWidth="0.416667"
+                strokeLinecap="round"
             />
             <path
                 d="M40.7767 68.3333L29.2496 83.5107H44.6191"
                 stroke="#D6DDE2"
-                stroke-width="22.9167"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="22.9167"
+                strokeLinecap="round"
+                strokeLinejoin="round"
             />
             <g filter="url(#filter0_b_1234_53734)">
                 <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
+                    fillRule="evenodd"
+                    clipRule="evenodd"
                     d="M47.5059 94.3359C45.5847 94.3359 43.2793 93.1832 43.2793 89.5329C43.2793 86.8432 45.2005 84.3456 47.8901 84.3456C50.5798 84.3456 52.5932 84.3456 54.3211 84.7704L58.3678 86.0828C62.1823 87.2733 65.9749 88.5148 69.7594 89.8211C70.4327 90.0535 70.8615 90.6742 70.8819 91.3462C71.2455 91.6901 71.4509 92.1932 71.3954 92.7294C71.3008 93.645 70.4818 94.3105 69.5662 94.2159L67.7908 94.0323C67.5176 94.2282 67.1827 94.3435 66.8209 94.3435L56.8209 94.3435C56.7668 94.3435 56.7134 94.3409 56.6607 94.3359L47.5059 94.3359Z"
                     fill="#FCBD9A"
                 />
@@ -117,32 +117,32 @@ export const FinalIcon = (props: SVGProps<SVGSVGElement>) => {
             <path
                 d="M67.4457 94.3537C68.2791 93.937 68.6958 92.5308 66.8207 92.062C66.1541 91.8953 60.5707 90.812 57.6541 90.187"
                 stroke="#18293D"
-                stroke-width="0.416667"
-                stroke-linecap="round"
+                strokeWidth="0.416667"
+                strokeLinecap="round"
             />
             <path
                 d="M70.9159 93.7499C71.7492 93.1249 71.7492 91.302 69.8742 90.8333C67.9992 90.3645 58.8325 87.4999 58.8325 87.4999"
                 stroke="#18293D"
-                stroke-width="0.416667"
-                stroke-linecap="round"
+                strokeWidth="0.416667"
+                strokeLinecap="round"
             />
             <path
                 d="M39.7982 91.4818C39.1562 91.475 38.6325 90.9268 38.6393 90.2832C38.6461 89.6396 39.1929 89.1146 39.8349 89.1214C40.4768 89.1282 41.0005 89.6764 40.9938 90.32C40.987 90.9635 40.4402 91.4885 39.7982 91.4818Z"
                 stroke="#17293E"
-                stroke-width="0.416667"
-                stroke-miterlimit="10"
+                strokeWidth="0.416667"
+                strokeMiterlimit="10"
             />
             <path
                 d="M43.1895 88.9371C42.482 91.5316 42.5159 93.2341 39.9883 93.3123C37.4979 93.4246 32.6821 93.2279 32.6821 93.2279"
                 stroke="#17293E"
-                stroke-width="0.416667"
-                stroke-miterlimit="10"
-                stroke-linecap="round"
+                strokeWidth="0.416667"
+                strokeMiterlimit="10"
+                strokeLinecap="round"
             />
-            <path d="M19.25 94.5833H108.417" stroke="#18293D" stroke-width="0.416667" />
+            <path d="M19.25 94.5833H108.417" stroke="#18293D" strokeWidth="0.416667" />
             <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 d="M87.7908 84.9999L71.668 73.3865L88.4158 56.6666L93.2075 65.2082L97.9991 51.4584L107.582 53.3333C107.582 53.3333 106.541 73.1781 105.499 78.1249C104.457 83.0717 103.355 84.8113 99.8741 86.8749C96.3936 88.9385 92.3741 88.3332 87.7908 84.9999Z"
                 fill="#D6DDE2"
             />
@@ -150,11 +150,11 @@ export const FinalIcon = (props: SVGProps<SVGSVGElement>) => {
                 d="M109.423 42.5118C110.111 43.0759 109.997 44.0029 109.571 44.8256C108.459 46.2977 105.815 49.2066 105.237 50.184L99.8073 49.0981C99.8073 49.0981 102.688 46.4552 106.323 43.3066C107.621 42.1824 108.736 41.9485 109.423 42.5118Z"
                 fill="#FCBD9A"
                 stroke="#17293E"
-                stroke-width="0.416667"
+                strokeWidth="0.416667"
             />
             <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 d="M97.9987 52.1086C98.5594 50.3223 99.5118 47.9743 104.333 47.6512C109.241 47.3222 115.735 47.6512 115.735 47.6512C116.329 46.819 117.145 45.2758 117.85 43.942C118.308 43.0754 118.72 42.2972 118.993 41.8596C119.445 41.1357 120.595 40.0498 121.318 40.5927C121.709 40.8856 121.92 41.2312 121.901 41.7562C122.42 41.2464 122.847 40.8376 123.126 40.5891C124.744 39.1492 126.538 40.3243 125.379 42.1496C125.275 42.3129 125.151 42.4931 125.009 42.6871C126.477 42.4083 127.439 43.7787 126.051 44.9352C124.205 46.4737 119.359 49.7174 117.947 50.6555C117.129 51.5276 115.517 51.7058 113.853 51.8898C113.283 51.9527 112.708 52.0163 112.156 52.1086C110.275 52.4233 108.279 52.8998 108.279 52.8998L108.279 54.7555C108.279 57.1083 106.404 59.5472 102.862 59.5472C98.4153 59.024 97.4557 54.5286 97.8176 52.8998C97.8176 52.8998 97.9229 52.3498 97.9987 52.1086Z"
                 fill="#FCBD9A"
             />
@@ -165,40 +165,35 @@ export const FinalIcon = (props: SVGProps<SVGSVGElement>) => {
             <path
                 d="M121.887 41.8586C121.887 43.4875 119.534 48.1931 119.534 48.1931"
                 stroke="#17293E"
-                stroke-width="0.416667"
-                stroke-linecap="round"
+                strokeWidth="0.416667"
+                strokeLinecap="round"
             />
-            <path
-                d="M125.145 42.5826L121.706 46.7453"
-                stroke="#17293E"
-                stroke-width="0.416667"
-                stroke-linecap="round"
-            />
+            <path d="M125.145 42.5826L121.706 46.7453" stroke="#17293E" strokeWidth="0.416667" strokeLinecap="round" />
             <path
                 d="M47.4459 84.3537L35.8052 81.27M29.5292 85.187C31.8209 80.812 35.8052 81.27 35.8052 81.27M35.8052 81.27L39.8397 74.3537M93 65.2083L89.875 74.3537"
                 stroke="#18293D"
-                stroke-width="0.416667"
-                stroke-linecap="round"
+                strokeWidth="0.416667"
+                strokeLinecap="round"
             />
             <path
                 d="M101.731 62.614C101.588 63.2414 100.942 63.6378 100.317 63.4943C99.6907 63.3508 99.2953 62.7035 99.4384 62.076C99.5816 61.4486 100.227 61.0522 100.853 61.1957C101.479 61.3393 101.874 61.9866 101.731 62.614Z"
                 stroke="#17293E"
-                stroke-width="0.416667"
-                stroke-miterlimit="10"
+                strokeWidth="0.416667"
+                strokeMiterlimit="10"
             />
             <path
                 d="M99.834 58.5417C102.12 60 104.018 60.3237 103.557 62.8162C103.137 65.2796 101.921 69.9552 101.921 69.9552"
                 stroke="#17293E"
-                stroke-width="0.416667"
-                stroke-miterlimit="10"
-                stroke-linecap="round"
+                strokeWidth="0.416667"
+                strokeMiterlimit="10"
+                strokeLinecap="round"
             />
             <circle cx="114.042" cy="26.4583" r="11.4583" fill="#2FC26E" />
             <path
                 d="M108.834 26.4583L112.792 30.4166L119.667 22.9166"
                 stroke="white"
-                stroke-width="2.08333"
-                stroke-linejoin="round"
+                strokeWidth="2.08333"
+                strokeLinejoin="round"
             />
             <defs>
                 <filter
@@ -208,9 +203,9 @@ export const FinalIcon = (props: SVGProps<SVGSVGElement>) => {
                     width="32.011"
                     height="13.8826"
                     filterUnits="userSpaceOnUse"
-                    color-interpolation-filters="sRGB"
+                    colorInterpolationFilters="sRGB"
                 >
-                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                    <feFlood floodOpacity="0" result="BackgroundImageFix" />
                     <feGaussianBlur in="BackgroundImage" stdDeviation="0.867017" />
                     <feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_1234_53734" />
                     <feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur_1234_53734" result="shape" />
