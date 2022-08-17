@@ -7,7 +7,8 @@ import { PostIcon } from '../../components/Icons/ErrorIcons/PostIcon';
 import { ShieldIcon } from '../../components/Icons/ErrorIcons/ShieldIcon';
 import { TicketIcon } from '../../components/Icons/ErrorIcons/TicketIcon';
 
-export const CONFIGS = {
+export const ERROR_CONFIGS = {
+    0: { icon: <ShieldIcon />, title: 'Что-то пошло не так', description: 'Попробуйте еще раз оформить покупку.' },
     1: { icon: <ShieldIcon />, title: 'Что-то пошло не так', description: 'Попробуйте еще раз оформить покупку.' },
     2: {
         icon: <PostIcon />,
