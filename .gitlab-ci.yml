@@ -38,10 +38,10 @@ dockerize_test:
       when: never
     - when: on_success
 
-  dockerize_prod:
+dockerize_prod:
   stage: containerize
   allow_failure: false
-    rules:
+  rules:
     - if: '$CI_COMMIT_REF_NAME != "master"'
       when: never
     - if: $CI_MERGE_REQUEST_ID
