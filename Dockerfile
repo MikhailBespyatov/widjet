@@ -1,4 +1,4 @@
-FROM node:16-alpine
+FROM node:16-alpine as builder
 WORKDIR /srv
 COPY . /srv/
 RUN apk add git
