@@ -15,14 +15,13 @@ export const VerifySMS = () => {
 
     const onInputFinished = (code: string) => {
         verify({ code, preappId });
-        dispatch(setStep(2));
     };
 
-    // useEffect(() => {
-    //     if (isSuccess) {
-    //         dispatch(setStep(2));
-    //     }
-    // }, []);
+    useEffect(() => {
+        if (isSuccess) {
+            dispatch(setStep(2));
+        }
+    }, [isSuccess]);
 
     return (
         <Confirmation

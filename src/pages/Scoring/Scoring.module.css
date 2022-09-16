@@ -1,5 +1,7 @@
 .wrapper {
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .description {
@@ -12,4 +14,14 @@
 
 .progress_icon_wrapper {
     margin-bottom: 32px;
+}
+
+.buttonWrapper {
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .buttonWrapper {
+        width: 247px;
+    }
 }

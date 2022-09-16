@@ -1,14 +1,25 @@
-.button {
-    background-color: var(--bnpl-green);
-    color: var(--bnpl-white);
-}
-
+.button,
 .button:hover {
-    background-color: var(--bnpl-green);
+    background-color: var(--bnpl-black);
     color: var(--bnpl-white);
+    border-radius: 0;
 }
 
-.button:disabled {
-    background-color: var(--bnpl-lightgreen) !important;
+.button_cancel {
+    background-color: white;
+    border: 2px solid #7dc7ff;
+}
+
+.button:not(:disabled) span {
+    background: linear-gradient(89.93deg, #ffd8ff 0.08%, #959ef1 46.14%, #6cf6ff 99.97%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+}
+
+.button:disabled,
+.button:disabled span {
+    background-color: var(--bnpl-lightblue) !important;
     color: var(--bnpl-white) !important;
 }

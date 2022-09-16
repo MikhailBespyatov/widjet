@@ -13,10 +13,48 @@
 }
 
 .button {
+    width: 100%;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.button span {
+    position: relative;
     font-size: 13px;
     line-height: 18px;
-    color: #0dba26;
+    color: transparent;
+    width: fit-content;
+    background: linear-gradient(89.93deg, #ffd8ff 0.08%, #959ef1 46.14%, #6cf6ff 99.97%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+}
+
+.button span::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
     width: 100%;
-    text-align: center;
-    margin-bottom: 40px;
+    height: 1px;
+    background: linear-gradient(89.93deg, #ffd8ff 0.08%, #959ef1 46.14%, #6cf6ff 99.97%);
+}
+
+@media (min-width: 768px) {
+    .succes_wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .succes {
+        font-weight: 700;
+        font-size: 22px;
+        line-height: 26px;
+        text-align: center;
+        color: #0b1f35;
+        mix-blend-mode: normal;
+        opacity: 0.9;
+        margin-top: 16px;
+    }
 }

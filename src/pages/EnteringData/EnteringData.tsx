@@ -12,12 +12,13 @@ import { setStep } from 'store/reducers/stepSlice';
 import { Title } from 'components/Title';
 import { CustomButton } from 'components/CustomButton';
 import { AppContext } from '../../context/AppContext';
+import { Loader } from '../../components/Loader';
 
 export const EnteringData = () => {
     const [iin, setIin] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
     const { preappId } = useContext(AppContext);
-    const [sendSMS, { isSuccess }] = useSendSMSMutation();
+    const [sendSMS, { isSuccess, isLoading, isError, error }] = useSendSMSMutation();
     const [iinErrorMessage, setIinErrorMessage] = useState('');
     const [phoneNumberErrorMessage, setPhoneNumberErrorMessage] = useState('');
     const [agreementChecked, setAgreementChecked] = useState(false);
@@ -38,7 +39,6 @@ export const EnteringData = () => {
         const phoneNumberError = validatePhoneNumber(phoneNumber);
         if (typeof iinError !== 'string' && typeof phoneNumberError !== 'string') {
             sendSMS({ body: { iin, phoneNumber }, preappId });
-            dispatch(setStep(1));
         } else {
             if (typeof iinError === 'string') setIinErrorMessage(iinError);
             if (typeof phoneNumberError === 'string') setPhoneNumberErrorMessage(phoneNumberError);
@@ -90,9 +90,12 @@ export const EnteringData = () => {
                 checked={agreementChecked}
                 check={() => setAgreementChecked(!agreementChecked)}
             />
-            <CustomButton block onClick={onSendSMS} disabled={!agreementChecked}>
-                Продолжить
-            </CustomButton>
+            <div className={s.buttonWrapper}>
+                <CustomButton block onClick={onSendSMS} disabled={!agreementChecked}>
+                    Продолжить
+                </CustomButton>
+            </div>
+            <Loader isVisible={isLoading} />
         </div>
     );
 };

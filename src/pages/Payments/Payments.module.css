@@ -4,6 +4,6 @@
     align-items: center;
 }
 
-.cancel_button {
+.buttons_group button:not(:first-child) {
     margin-left: 12px;
 }

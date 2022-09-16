@@ -23,3 +23,7 @@
     color: #000000;
     margin-left: 8px;
 }
+.cardActive {
+    background: #ecedef;
+    border: none;
+}

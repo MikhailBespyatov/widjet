@@ -17,3 +17,13 @@
 .label {
     left: 0;
 }
+
+@media (min-width: 768px) {
+    .field_wrapper {
+        width: 348px;
+    }
+
+    .buttonWrapper {
+        width: 173px;
+    }
+}

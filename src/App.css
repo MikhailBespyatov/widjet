@@ -13,8 +13,8 @@ body {
 }
 
 :root {
-    --bnpl-green: #00a755;
-    --bnpl-lightgreen: rgba(0, 167, 85, 0.5);
+    --bnpl-lightblue: #d4edff;
+    --bnpl-black: #011438;
     --bnpl-white: #ffffff;
 }
 

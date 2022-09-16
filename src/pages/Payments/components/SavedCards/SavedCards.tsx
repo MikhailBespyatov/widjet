@@ -1,30 +1,41 @@
 import { useState } from 'react';
 import { OkIcon } from '../../../../components/Icons/OkIcon';
 import { Title } from '../../../../components/Title';
-import { cards } from '../../constants';
+import { IUserCard } from '../../../../types/stepTypes';
 import { SavedCard } from '../SavedCard/SavedCard';
 import s from './SavedCards.module.css';
 
 interface Props {
     onLinkCardClick: () => void;
+    setActiveCard: (card: IUserCard) => void;
+    cards: IUserCard[];
+    activeCard: IUserCard | null;
 }
 
-export const SavedCards = ({ onLinkCardClick }: Props) => {
+export const SavedCards = ({ onLinkCardClick, setActiveCard, cards, activeCard }: Props) => {
     return (
-        <div>
+        <>
             <div className={s.succes_wrapper}>
                 <OkIcon />
                 <span className={s.succes}>Магазин одобрил рассрочку</span>
             </div>
             <Title>Добавьте карту любого банка</Title>
             <div>
-                {cards.map((card) => {
-                    return <SavedCard key={card.cardMask} card={card} />;
+                {cards?.map((card) => {
+                    const cardIsActive = activeCard?.cardMask === card?.cardMask;
+                    return (
+                        <SavedCard
+                            key={card.cardMask}
+                            card={card}
+                            onClick={() => setActiveCard(card)}
+                            isActive={cardIsActive}
+                        />
+                    );
                 })}
             </div>
             <button type="button" className={s.button} onClick={onLinkCardClick}>
-                Привязать карту
+                <span>Привязать карту</span>
             </button>
-        </div>
+        </>
     );
 };

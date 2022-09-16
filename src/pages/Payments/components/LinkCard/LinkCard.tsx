@@ -16,6 +16,10 @@ import {
 } from '../../constants';
 import { BANK_NAMES } from 'constants/bankNames';
 import { MASKS, PLACEHOLDERS } from '../../../../constants/formConstants';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../../../store/store';
+import { useDispatch } from 'react-redux';
+import { setData as setCardData, setErrors as setCardErrors } from '../../../../store/reducers/linkCardSlice';
 
 interface CardBin {
     bin: string;
@@ -23,10 +27,19 @@ interface CardBin {
 }
 
 export const LinkCard = (): JSX.Element => {
-    const [data, setData] = useState(initialData);
-    const [errors, setErrors] = useState(initialErrors);
+    const data = useSelector((state: RootState) => state.linkCard.data);
+    const errors = useSelector((state: RootState) => state.linkCard.errors);
     const [bins, setBins] = useState<CardBin[]>();
     const [bankName, setBankName] = useState<string>();
+    const dispatch = useDispatch();
+
+    const setData = (value: typeof data) => {
+        dispatch(setCardData(value));
+    };
+
+    const setErrors = (value: typeof errors) => {
+        dispatch(setCardErrors(value));
+    };
 
     const { card_name, card_no_bin, exp_month, exp_year, sec_cvv2 } = data;
     const { cardNameError, cardNoBinError, dateError, secCvv2Error } = errors;

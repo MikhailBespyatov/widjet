@@ -3,6 +3,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
 }
 
 .description {
@@ -11,4 +12,14 @@
     letter-spacing: 0.5px;
     color: #6d7986;
     margin-bottom: 52px;
+}
+
+.buttonWrapper {
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .buttonWrapper {
+        width: 247px;
+    }
 }

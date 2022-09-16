@@ -1,5 +1,6 @@
 import { Button } from '@alfalab/core-components/button';
 import { FC, ReactNode } from 'react';
+import cn from 'classnames';
 import s from './CustomButton.module.css';
 
 interface Props {
@@ -7,12 +8,13 @@ interface Props {
     block?: boolean;
     disabled?: boolean;
     onClick: () => void;
+    isCancel?: boolean;
 }
 
-export const CustomButton: FC<Props> = ({ children, ...props }) => {
+export const CustomButton: FC<Props> = ({ children, isCancel, ...props }) => {
     return (
-        <Button className={s.button} size="s" view="primary" {...props}>
-            {children}
+        <Button className={cn(s.button, { [s.button_cancel]: isCancel })} size="s" view="primary" {...props}>
+            <span>{children}</span>
         </Button>
     );
 };

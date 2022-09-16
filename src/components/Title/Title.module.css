@@ -4,3 +4,12 @@
     line-height: 22px;
     color: #172a3f;
 }
+
+@media (min-width: 768px) {
+    .title {
+        padding-top: 0;
+        margin-top: 0;
+        font-size: 22px;
+        line-height: 26px;
+    }
+}
