@@ -3,11 +3,15 @@ import { baseAPI } from 'services/baseAPI';
 import stepReducer from './reducers/stepSlice';
 import errorReducer from './reducers/errorSlice';
 import linkCardReducer from './reducers/linkCardSlice';
+import personalDataReducer from './reducers/personalData';
+import duplicatePreappIdReducer from './reducers/duplicatedPreappId';
 
 const rootReducer = combineReducers({
     step: stepReducer,
     error: errorReducer,
     linkCard: linkCardReducer,
+    personalData: personalDataReducer,
+    duplicatePreappId: duplicatePreappIdReducer,
     [baseAPI.reducerPath]: baseAPI.reducer,
 });
 

@@ -1,12 +1,12 @@
-* {
+.bnplBody * {
     box-sizing: border-box;
 }
 
-::before {
+.bnplBody *::before {
     box-sizing: border-box;
 }
 
-body {
+.bnplBody {
     margin: 0 !important;
     font-family: system-ui !important;
     overflow-x: hidden;
@@ -16,13 +16,4 @@ body {
     --bnpl-lightblue: #d4edff;
     --bnpl-black: #011438;
     --bnpl-white: #ffffff;
-}
-
-button {
-    padding: 0;
-    border: none;
-    font: inherit;
-    color: inherit;
-    background-color: transparent;
-    cursor: pointer;
 }

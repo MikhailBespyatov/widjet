@@ -4,6 +4,6 @@
     align-items: center;
 }
 
-.buttons_group button:not(:first-child) {
+.buttons_group button:last-child {
     margin-left: 12px;
 }

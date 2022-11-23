@@ -12,12 +12,136 @@
     color: #6d7986;
 }
 
-.progress_icon_wrapper {
-    margin-bottom: 32px;
+.iconWrapper {
+    margin-bottom: 24px;
 }
 
 .buttonWrapper {
     width: 100%;
+}
+
+.loader_wrapper {
+    position: relative;
+    display: flex;
+    margin-bottom: 30px;
+}
+
+.loader {
+    display: inline-block;
+    position: relative;
+    width: 62px;
+    height: 62px;
+}
+
+.loader div {
+    position: absolute;
+    width: 3.95px;
+    height: 3.95px;
+    background: #80ecf6;
+    border-radius: 9px;
+    animation: loader 1.5s linear infinite;
+}
+
+.loader div:nth-child(1) {
+    animation-delay: 0s;
+    top: 28.75px;
+    left: 49.02px;
+}
+
+.loader div:nth-child(2) {
+    animation-delay: -0.125s;
+    top: 18.12px;
+    left: 46.39px;
+}
+
+.loader div:nth-child(3) {
+    animation-delay: -0.25s;
+    top: 11.81px;
+    left: 38.76px;
+}
+
+.loader div:nth-child(4) {
+    animation-delay: -0.375s;
+    top: 9.42px;
+    left: 28.63px;
+}
+
+.loader div:nth-child(5) {
+    animation-delay: -0.5s;
+    top: 11.81px;
+    left: 19.29px;
+}
+
+.loader div:nth-child(6) {
+    animation-delay: -0.625s;
+    top: 18.12px;
+    left: 11.67px;
+}
+
+.loader div:nth-child(7) {
+    animation-delay: -0.75s;
+    top: 28.75px;
+    left: 9.04px;
+}
+
+.loader div:nth-child(8) {
+    animation-delay: -0.875s;
+    top: 38.58px;
+    left: 11.59px;
+}
+
+.loader div:nth-child(9) {
+    animation-delay: -1s;
+    top: 45.77px;
+    left: 18.87px;
+}
+
+.loader div:nth-child(10) {
+    animation-delay: -1.125s;
+    top: 48.41px;
+    left: 28.63px;
+}
+
+.loader div:nth-child(11) {
+    animation-delay: -1.25s;
+    top: 45.77px;
+    left: 38.43px;
+}
+
+.loader div:nth-child(12) {
+    animation-delay: -1.375s;
+    top: 38.58px;
+    left: 46.46px;
+}
+
+@keyframes loader {
+    0%,
+    20%,
+    80%,
+    100% {
+        transform: scale(1);
+        background: #f797fc;
+    }
+
+    50% {
+        transform: scale(1.5);
+        background: #58b2e4;
+    }
+}
+
+.progress_percent {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    font-family: 'SF Pro Display';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 32px;
+    color: #6d7986;
 }
 
 @media (min-width: 768px) {

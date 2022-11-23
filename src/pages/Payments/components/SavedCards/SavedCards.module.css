@@ -16,6 +16,12 @@
     width: 100%;
     margin-bottom: 40px;
     text-align: center;
+    padding: 0;
+    border: none;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+    cursor: pointer;
 }
 
 .button span {

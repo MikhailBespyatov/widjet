@@ -11,6 +11,7 @@
 }
 
 .button:not(:disabled) span {
+    white-space: nowrap;
     background: linear-gradient(89.93deg, #ffd8ff 0.08%, #959ef1 46.14%, #6cf6ff 99.97%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;

@@ -6,14 +6,14 @@ import { AppContext } from '../../context/AppContext';
 import s from './Final.module.css';
 
 export const Final = () => {
-    const { onClose } = useContext(AppContext);
+    const { onEnd, partnerName } = useContext(AppContext);
 
     return (
         <div className={s.wrapper}>
             <FinalIcon className={s.icon} />
             <Title>Заказ успешно оформлен </Title>
-            <p className={s.description}>Магазин Lamoda скоро свяжется с Вами для доставки</p>
-            <CustomButton block onClick={onClose}>
+            <p className={s.description}>Магазин {partnerName} скоро свяжется с Вами для доставки</p>
+            <CustomButton block onClick={onEnd}>
                 Вернуться в магазин
             </CustomButton>
         </div>

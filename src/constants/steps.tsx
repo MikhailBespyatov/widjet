@@ -9,6 +9,8 @@ export const STEPS = [<EnteringData />, <VerifySMS />, <Scoring />, <Payments />
 export const STEPS_CODE = {
     101: 0,
     104: 1,
+    106: 2,
+    108: 2,
     109: 3,
     110: 3,
     111: 4,

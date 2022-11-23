@@ -1,9 +1,10 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react';
 import { ICode, IPreappId, IPreappIdData } from 'types/API';
+import { baseUrl } from '../constants/urls';
 
 export const baseAPI = createApi({
     reducerPath: 'baseAPI',
-    baseQuery: fetchBaseQuery({ baseUrl: '/bnpl/' }),
+    baseQuery: fetchBaseQuery({ baseUrl: `${baseUrl}/api/bnpl/` }),
     tagTypes: ['PreapId', 'Status'],
     endpoints: (build) => ({
         getStatus: build.query<any, any>({
@@ -13,7 +14,7 @@ export const baseAPI = createApi({
         }),
         getPreappId: build.query<any, IPreappIdData>({
             query: (preappValues) => ({
-                url: `v2/preapp`,
+                url: `preapp`,
                 method: 'POST',
                 body: preappValues,
             }),
@@ -57,16 +58,44 @@ export const baseAPI = createApi({
                 body: data,
             }),
         }),
+        cancelOrder: build.mutation({
+            query: (preappId: string) => ({
+                url: `${preappId}/cancel`,
+                method: 'POST',
+            }),
+        }),
+        proceed: build.mutation({
+            query: (preappId: string) => ({
+                url: `${preappId}/proceed`,
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            }),
+        }),
+        duplicate: build.mutation({
+            query: (preappId: string) => ({
+                url: `${preappId}/duplicate`,
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            }),
+        }),
     }),
 });
 
 export const {
+    useDuplicateMutation,
+    useProceedMutation,
     useGetPreappIdQuery,
     useSendSMSMutation,
     useVerifySMSMutation,
     useGetStatusQuery,
+    useLazyGetStatusQuery,
     useGetUCardsQuery,
     useUseCardMutation,
     useEcomStartMutation,
     useCardLinkMutation,
+    useCancelOrderMutation,
 } = baseAPI;

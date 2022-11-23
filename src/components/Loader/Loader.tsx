@@ -8,11 +8,22 @@ interface Props {
 
 export const Loader: FC<Props> = ({ isVisible }) => {
     return isVisible ? (
-        <div className={s.wrapper}>
-            <div className={s.content}>
-                <h5 className={s.title}>Проверяем</h5>
-                <div className={s.icon_wrapper}>
-                    <LoaderIcon />
+        <div className={s.overlay}>
+            <p className={s.title}>Проверяем</p>
+            <div className={s.loaderContainer}>
+                <div className={s.loader}>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
                 </div>
             </div>
         </div>

@@ -21,11 +21,11 @@ export const SavedCards = ({ onLinkCardClick, setActiveCard, cards, activeCard }
             </div>
             <Title>Добавьте карту любого банка</Title>
             <div>
-                {cards?.map((card) => {
+                {cards?.map((card, i) => {
                     const cardIsActive = activeCard?.cardMask === card?.cardMask;
                     return (
                         <SavedCard
-                            key={card.cardMask}
+                            key={i.toString()}
                             card={card}
                             onClick={() => setActiveCard(card)}
                             isActive={cardIsActive}

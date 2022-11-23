@@ -1,19 +1,17 @@
-import { Button } from '@alfalab/core-components/button';
 import { useContext, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { CustomButton } from '../../components/CustomButton';
 import { Loader } from '../../components/Loader';
-import { preappId } from '../../constants/urls';
 import { AppContext } from '../../context/AppContext';
 import {
+    useCancelOrderMutation,
     useCardLinkMutation,
     useEcomStartMutation,
-    useGetStatusQuery,
     useGetUCardsQuery,
+    useLazyGetStatusQuery,
     useUseCardMutation,
 } from '../../services/baseAPI';
-import { setStep } from '../../store/reducers/stepSlice';
 import { RootState } from '../../store/store';
 import { IUserCard } from '../../types/stepTypes';
 import { LinkCard } from './components/LinkCard';
@@ -25,28 +23,34 @@ import s from './Payments.module.css';
 export const Payments = () => {
     const [isLinkCard, setIsLinkCard] = useState(false);
     const [activeCard, setActiveCard] = useState<null | IUserCard>(null);
+    const [statusLoading, setStatusLoading] = useState(false);
     const { onClose, preappId } = useContext(AppContext);
-    const { data: savedCards, isFetching } = useGetUCardsQuery(preappId);
+    const { data: savedCards, isFetching: isSavedCardsLoading } = useGetUCardsQuery(preappId);
     const [postUseCard, { isLoading: useCardIsLoading, isSuccess: useCardIsSuccess }] = useUseCardMutation();
-    const [ecomStart, { data: ecomStartData, isLoading: ecomStartIsLoading, isSuccess: ecomStartIsSuccess }] =
-        useEcomStartMutation();
-    const [cardLink, { data: cardLinkData, isLoading: cardLinkIsLoading, isSuccess: cardLinkIsSuccess }] =
-        useCardLinkMutation();
+    const [ecomStart, { isLoading: ecomStartIsLoading, isSuccess: ecomStartIsSuccess }] = useEcomStartMutation();
+    const [cancelOrder, { isLoading: cancelOrderLoading }] = useCancelOrderMutation();
+    const [cardLink] = useCardLinkMutation();
+    const [trigger] = useLazyGetStatusQuery();
     const data = useSelector((state: RootState) => state.linkCard.data);
     const errors = useSelector((state: RootState) => state.linkCard.errors);
-    const {
-        data: statusData,
-        isFetching: isStatusLoading,
-        refetch: getStatus,
-    } = useGetStatusQuery(preappId, {
-        skip: !Boolean(cardLinkData?.Code),
-        pollingInterval: 1000,
-    });
     const dispatch = useDispatch();
     const userCards = savedCards?.UserCards;
+    const loading =
+        isSavedCardsLoading || useCardIsLoading || ecomStartIsLoading || statusLoading || cancelOrderLoading;
 
     const setErrors = (value: typeof errors) => {
         dispatch(setCardErrors(value));
+    };
+
+    const getStatus = () => {
+        setStatusLoading(true);
+        trigger(preappId).then((data) => {
+            if (data.data.data.code === 110) {
+                setTimeout(() => getStatus(), 2000);
+            } else {
+                setStatusLoading(false);
+            }
+        });
     };
 
     const onSubmit = async () => {
@@ -58,28 +62,34 @@ export const Payments = () => {
             setErrors(errors);
             return;
         } else {
-            await ecomStart(preappId).then(() => {
-                cardLink({ data: formData, preappId }).then((data: any) => {
-                    if (data.data.body.cardRequestLink) {
-                        window.location.href = data.data.body.cardRequestLink;
-                    }
-                });
+            await ecomStart(preappId);
+            cardLink({ data: formData, preappId }).then((cardData) => {
+                if (cardData?.data?.Code) {
+                    getStatus();
+                }
+                if (cardData?.data.body.cardRequestLink) {
+                    window.open(cardData?.data.body.cardRequestLink);
+                    getStatus();
+                }
             });
         }
     };
 
-    useEffect(() => {
-        if (useCardIsSuccess) {
-            dispatch(setStep(4));
-        }
-        if (statusData?.data.code !== 114) {
-            getStatus();
-        }
-    }, [useCardIsSuccess, cardLinkIsSuccess, statusData?.data.code]);
+    const onUseCard = async () => {
+        await postUseCard({ card: activeCard, preappId });
+        trigger(preappId);
+    };
 
-    if (isFetching || useCardIsLoading || isStatusLoading) {
-        return <Loader isVisible={isFetching || useCardIsLoading || isStatusLoading} />;
-    }
+    const onCancel = async () => {
+        await cancelOrder(preappId);
+        onClose();
+    };
+
+    useEffect(() => {
+        if (savedCards && savedCards.UserCards?.length > 0 && !savedCards.UserCards[0]?.cardMask) {
+            setIsLinkCard(true);
+        }
+    }, [savedCards]);
 
     return (
         <div>
@@ -94,19 +104,20 @@ export const Payments = () => {
                 />
             )}
             <div className={s.buttons_group}>
+                <CustomButton block isCancel onClick={onCancel}>
+                    Отмена
+                </CustomButton>
                 <CustomButton
                     block
                     onClick={() => {
                         if (isLinkCard) onSubmit();
-                        if (activeCard) postUseCard({ card: activeCard, preappId });
+                        if (activeCard) onUseCard();
                     }}
                 >
                     Подтвердить
                 </CustomButton>
-                <CustomButton block isCancel onClick={onClose}>
-                    Отмена
-                </CustomButton>
             </div>
+            <Loader isVisible={loading} />
         </div>
     );
 };

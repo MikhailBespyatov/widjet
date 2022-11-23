@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { baseAPI } from '../../services/baseAPI';
+import { validationErrorCode } from '../../constants/validationErrorCode';
 
 export interface ErrorState {
     isError: boolean;
@@ -28,7 +29,9 @@ export const errorSlice = createSlice({
                 (state, { payload }) => {
                     const error = payload as unknown as { data: { error: { code: number } } };
                     state.errorCode = error?.data.error.code || 0;
-                    state.isError = Boolean(payload);
+                    if (error && !validationErrorCode.includes(error.data.error.code)) {
+                        state.isError = Boolean(payload);
+                    }
                 },
             );
         });

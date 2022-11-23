@@ -1,13 +1,17 @@
+const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = (env, argv) => {
+    const mode = argv.mode || 'development';
+
     return {
         output: {
             path: path.resolve(__dirname, 'build'),
             filename: 'index_bundle.js',
-            library: 'bnplApi',
-            publicPath: argv.mode === 'production' ? '/bnpl-widget' : '',
+            library: 'BnplKzApi',
+            libraryTarget: 'umd',
+            // publicPath: argv.mode === 'production' ? '/bnpl-widget' : '',
         },
         entry: './src/index.tsx',
         module: {
@@ -34,6 +38,9 @@ module.exports = (env, argv) => {
             new HtmlWebpackPlugin({
                 template: './src/index.html',
             }),
+            new webpack.DefinePlugin({
+                'process.env.NODE_ENV': JSON.stringify(mode),
+            }),
         ],
         resolve: {
             extensions: ['.tsx', '.ts', '.js', '.css', '.scss'],
@@ -55,7 +62,7 @@ module.exports = (env, argv) => {
             hot: true,
             proxy: {
                 '**': {
-                    target: 'https://rancher-test.alfa-bank.kz:30380',
+                    target: 'https://dev.bnpl.kz',
                     secure: false,
                     changeOrigin: true,
                 },

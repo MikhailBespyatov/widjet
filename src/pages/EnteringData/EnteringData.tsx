@@ -5,7 +5,7 @@ import { Button } from '@alfalab/core-components/button';
 import { MASKS, PLACEHOLDERS } from 'constants/formConstants';
 import { ChangeEvent, useContext, useEffect, useState } from 'react';
 import { baseUrl } from 'constants/urls';
-import { useSendSMSMutation } from 'services/baseAPI';
+import { useGetStatusQuery, useSendSMSMutation } from 'services/baseAPI';
 import { validateIin, validatePhoneNumber } from 'helpers/validationFunctions';
 import { useDispatch } from 'react-redux';
 import { setStep } from 'store/reducers/stepSlice';
@@ -13,25 +13,30 @@ import { Title } from 'components/Title';
 import { CustomButton } from 'components/CustomButton';
 import { AppContext } from '../../context/AppContext';
 import { Loader } from '../../components/Loader';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store/store';
+import { setIin, setPhoneNumber } from '../../store/reducers/personalData';
+import { enteringDataErrorCode } from '../../constants/validationErrorCode';
 
 export const EnteringData = () => {
-    const [iin, setIin] = useState('');
-    const [phoneNumber, setPhoneNumber] = useState('');
+    const [title, setTitle] = useState(<Title>Введите Ваши данные</Title>);
+    const { iin, phoneNumber } = useSelector((state: RootState) => state.personalData);
     const { preappId } = useContext(AppContext);
-    const [sendSMS, { isSuccess, isLoading, isError, error }] = useSendSMSMutation();
+    const [sendSMS, { isSuccess, isLoading }] = useSendSMSMutation();
     const [iinErrorMessage, setIinErrorMessage] = useState('');
     const [phoneNumberErrorMessage, setPhoneNumberErrorMessage] = useState('');
     const [agreementChecked, setAgreementChecked] = useState(false);
+    const errorCode = useSelector((state: RootState) => state.error.errorCode);
     const dispatch = useDispatch();
 
     const onIin = (e: ChangeEvent<HTMLInputElement>) => {
         setIinErrorMessage('');
-        setIin(e.target.value.replace(/\s/g, ''));
+        dispatch(setIin(e.target.value.replace(/\s/g, '')));
     };
 
     const onPhoneNumber = (e: ChangeEvent<HTMLInputElement>) => {
         setPhoneNumberErrorMessage('');
-        setPhoneNumber(e.target.value.replace(/\D/g, ''));
+        dispatch(setPhoneNumber(e.target.value.replace(/\D/g, '')));
     };
 
     const onSendSMS = async () => {
@@ -49,11 +54,14 @@ export const EnteringData = () => {
         if (isSuccess) {
             dispatch(setStep(1));
         }
+        if (enteringDataErrorCode.includes(errorCode)) {
+            setTitle(<Title>Ваш номер не совпадает с зарегистрированным ИИН</Title>);
+        }
     }, [isSuccess]);
 
     return (
         <div>
-            <Title>Введите Ваши данные</Title>
+            {title}
             <div className={s.field_wrapper}>
                 <MaskedInput
                     block
@@ -86,13 +94,13 @@ export const EnteringData = () => {
                 dataTestId="checkbox-personal-data"
                 linkedText="обработку персональных данных"
                 title="Я соглашаюсь на "
-                linkUrl={`${baseUrl}${preappId}/agreement`}
+                linkUrl={`${baseUrl}/api/bnpl/${preappId}/agreement`}
                 checked={agreementChecked}
                 check={() => setAgreementChecked(!agreementChecked)}
             />
             <div className={s.buttonWrapper}>
                 <CustomButton block onClick={onSendSMS} disabled={!agreementChecked}>
-                    Продолжить
+                    {!agreementChecked ? 'Оформить' : 'Продолжить'}
                 </CustomButton>
             </div>
             <Loader isVisible={isLoading} />

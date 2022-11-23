@@ -11,27 +11,41 @@ import s from './Scoring.module.css';
 export const Scoring = () => {
     const [scoringStep, setScoringStep] = useState(0);
     const activeConfig = SCORING_STEPS_CONFIG[scoringStep];
-    const { description, icon, progressIcon } = activeConfig;
+    const [scoringData, setScoringData] = useState<any>({});
+    const { description, icon, percent } = activeConfig;
     const dispatch = useDispatch();
     const { onClose, preappId } = useContext(AppContext);
-    // const { data, isFetching: isStatusLoading } = useGetStatusQuery(preappId, { refetchOnMountOrArgChange: true });
-    // console.log(data);
+    const queryOptions =
+        scoringData?.code !== 109 || scoringData.code === undefined ? { pollingInterval: 2000 } : undefined;
+    const { data, isFetching: isStatusLoading } = useGetStatusQuery(preappId, queryOptions);
 
     const timeoutId = setTimeout(() => {
         setScoringStep(scoringStep + 1);
-    }, 5000);
+    }, 30000);
 
     if (scoringStep === 3) {
         clearTimeout(timeoutId);
-        dispatch(setStep(3));
     }
+
+    useEffect(() => {
+        setScoringData(data);
+    }, [scoringData]);
 
     return (
         <div className={s.wrapper}>
-            {icon}
+            <div className={s.iconWrapper}>{icon}</div>
             <Title>Это займёт 30 секунд</Title>
             <p className={s.description}>{description}</p>
-            <div className={s.progress_icon_wrapper}>{progressIcon}</div>
+            <div className={s.loader_wrapper}>
+                <div className={s.loader}>
+                    {Array(12)
+                        .fill('')
+                        .map((_, i) => (
+                            <div key={i}></div>
+                        ))}
+                </div>
+                <span className={s.progress_percent}>{percent}</span>
+            </div>
             <div className={s.buttonWrapper}>
                 <CustomButton block onClick={onClose}>
                     Вернуться в магазин

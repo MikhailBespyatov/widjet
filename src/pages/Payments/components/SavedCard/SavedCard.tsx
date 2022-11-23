@@ -12,7 +12,7 @@ interface Props {
 }
 
 export const SavedCard = ({ onClick, card: { cardMask }, isActive }: Props) => {
-    const cardType = CARD_TYPES[cardMask[0]];
+    const cardType = cardMask && CARD_TYPES[cardMask[0]];
     return (
         <button className={cn(s.wrapper, { [s.cardActive]: isActive })} onClick={onClick}>
             <div className={s.flex_center}>
